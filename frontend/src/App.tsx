@@ -34,7 +34,7 @@ function App() {
   const loadHistory = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/chat/history/${sessionId}`
+        `${import.meta.env.VITE_API_URL}/chat/history/${sessionId}`
       );
 
       const history = response.data.map((msg: any) => ({
@@ -66,7 +66,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/chat/message",
+        `${import.meta.env.VITE_API_URL}/chat/message`,
         {
           message: currentMessage,
           sessionId,
