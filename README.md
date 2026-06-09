@@ -1,5 +1,13 @@
 Spur AI Support Chat Agent
 
+## 🔗 Live Links
+
+Frontend:
+https://spur-assignment-rosy.vercel.app/
+
+Backend:
+https://spur-assignment-1-a985.onrender.com/
+
 A full-stack AI-powered customer support chat application built as part of the Spur Founding Full-Stack Engineer take-home assignment.
 The app simulates a real customer support agent that responds to user queries using an LLM (Groq / OpenAI-compatible API), with full conversation persistence using Prisma + SQLite/PostgreSQL.
 ________________________________________
