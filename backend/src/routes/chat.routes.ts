@@ -32,16 +32,26 @@ router.post("/message", async (req, res) => {
       });
     }
 
-    let conversationId = sessionId;
+   let conversationId = sessionId;
 
-    // Create a new conversation if one doesn't exist
-    if (!conversationId) {
-      const conversation = await prisma.conversation.create({
-        data: {},
-      });
+// Create a new conversation if one doesn't exist
+if (!conversationId) {
+  const conversation = await prisma.conversation.create({
+    data: {},
+  });
+  conversationId = conversation.id;
+} else {
+  const existing = await prisma.conversation.findUnique({
+    where: { id: conversationId },
+  });
 
-      conversationId = conversation.id;
-    }
+  if (!existing) {
+    const conversation = await prisma.conversation.create({
+      data: {},
+    });
+    conversationId = conversation.id;
+  }
+}
 
     // Save user message
     await prisma.message.create({
